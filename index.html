@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#160f25" />
+  <title>A Little World of Abi ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#120d1e;--pink:#ffb7d5;--rose:#ff78ae;--lav:#c9b5ff;--cream:#fff4f8;--muted:#c7b9cf}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 50% 0%,#3b214a 0%,#1b122b 42%,#100b19 100%);color:var(--cream);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:55px 55px;z-index:-1}
+    .glow{position:fixed;width:380px;height:380px;border-radius:50%;filter:blur(90px);opacity:.17;pointer-events:none;z-index:-1}.g1{background:#ff6fae;top:15%;left:-180px}.g2{background:#9576ff;right:-190px;top:55%}
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 6vw;background:linear-gradient(#160f25dd,transparent);backdrop-filter:blur(8px)}
+    .brand{font-family:"Playfair Display",serif;letter-spacing:.08em;color:var(--pink)}.music-pill{border:1px solid #ffffff35;border-radius:30px;padding:9px 14px;color:#fff;background:#ffffff10;font-size:12px;cursor:pointer}
+    section{padding:100px 7vw;min-height:80vh;display:flex;align-items:center;justify-content:center}
+    .hero{min-height:100svh;text-align:center;position:relative;flex-direction:column;padding-top:120px}
+    .eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:var(--lav)}
+    h1,h2{font-family:"Playfair Display",serif;font-weight:500}
+    h1{font-size:clamp(52px,10vw,112px);line-height:.98;margin:22px 0 18px;color:#fff}
+    h1 span{display:block;font-style:italic;color:var(--pink);text-shadow:0 0 35px #ff91c766}
+    .subtitle{max-width:570px;line-height:1.9;color:var(--muted);font-size:15px;margin:0 auto}
+    .cta{margin-top:34px;border:0;border-radius:40px;padding:15px 25px;background:linear-gradient(110deg,#ff9fc8,#c7a8ff);color:#25142b;font-weight:700;letter-spacing:.03em;cursor:pointer;box-shadow:0 8px 35px #ff8cbd38;transition:.25s}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 12px 45px #ff8cbd66}
+
+    .hero-photo{width:min(245px,62vw);aspect-ratio:4/5;object-fit:cover;object-position:center 25%;border-radius:140px 140px 28px 28px;border:1px solid #ffffff55;box-shadow:0 18px 65px #ff9fc833,0 0 0 8px #ffffff08;margin:30px auto 4px;display:block}
+    .photo-caption{font-family:'Playfair Display',serif;font-style:italic;color:#f4c8df;font-size:17px;margin-top:12px}
+    .memory-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px auto 0;max-width:760px}
+    .memory-gallery img{width:100%;height:260px;object-fit:cover;border-radius:18px;border:1px solid #ffffff28;box-shadow:0 12px 35px #0004}
+    @media(max-width:600px){.memory-gallery img{height:210px}}
+
+
+
+    .letter-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .letter-actions [hidden]{display:none!important}
+    .cta.secondary{background:transparent;border:1px solid #d9a8c2;color:#f3cde0}
+    .cta.secondary:hover{background:#ffffff12}
+
+    .letter-wrap{max-width:760px;margin:35px auto 0}
+    .envelope{width:min(310px,80vw);height:190px;margin:0 auto 24px;position:relative;border-radius:14px;background:linear-gradient(145deg,#f5c8dc,#c5a6dc);box-shadow:0 20px 60px #0005;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+    .envelope:before,.envelope:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+    .envelope:before{left:0;border-width:95px 155px 0 0;border-color:#e6a9ca transparent transparent transparent}
+    .envelope:after{right:0;border-width:95px 0 0 155px;border-color:#d995bd transparent transparent transparent}
+    .envelope-top{position:absolute;top:0;left:0;width:0;height:0;border-left:155px solid transparent;border-right:155px solid transparent;border-top:112px solid #f9d9e8;transform-origin:top;transition:transform .65s;z-index:2}
+    .envelope-heart{position:absolute;z-index:3;top:75px;color:#a83d78;font-size:32px}
+    .envelope-label{position:relative;z-index:4;margin-bottom:17px;color:#59294a;font-family:'Playfair Display',serif;font-style:italic;font-size:18px}
+    .envelope.open .envelope-top{transform:rotateX(180deg)}
+    .letter-paper{margin:30px auto 0;text-align:left;padding:clamp(22px,5vw,42px);border-radius:18px;background:linear-gradient(145deg,#fff8f1,#f8e8ef);color:#493244;box-shadow:0 24px 75px #0005;line-height:1.95;animation:letterIn .8s ease both}
+    .letter-paper[hidden]{display:none}
+    @keyframes letterIn{from{opacity:0;transform:translateY(25px) scale(.98)}to{opacity:1;transform:none}}
+    .letter-kicker{text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#a25b83}
+    .letter-paper h3{font-family:'Playfair Display',serif;font-size:clamp(23px,4vw,32px);line-height:1.25;color:#8a3e69;margin:16px 0 24px}
+    .letter-paper p{font-size:14px;margin:0 0 18px}
+    .letter-signoff{font-family:'Playfair Display',serif;font-size:18px;color:#8a3e69}
+    .letter-from{text-align:right;margin-top:25px;font-family:'Playfair Display',serif;font-style:italic;color:#8a3e69;font-size:20px}
+
+    .scroll{position:absolute;bottom:28px;color:#bdaecb;font-size:11px;letter-spacing:.2em}
+    .section-inner{width:min(900px,100%);text-align:center}
+    h2{font-size:clamp(36px,6vw,62px);margin:12px 0 18px}
+    .lead{color:var(--muted);line-height:1.9;max-width:650px;margin:0 auto}
+    .song-card{margin:35px auto 0;max-width:650px;padding:25px;border:1px solid #ffffff20;border-radius:28px;background:linear-gradient(145deg,#ffffff12,#ffffff06);box-shadow:0 20px 70px #0004;text-align:left}
+    .song-top{display:flex;gap:18px;align-items:center}
+    .disc{width:76px;height:76px;flex:none;border-radius:50%;background:radial-gradient(circle,#1b1325 0 8%,#ffb6d5 9% 12%,#39213f 13% 35%,#e5a0c5 36% 38%,#271a36 39%);box-shadow:0 0 35px #ff9bc555;animation:spin 9s linear infinite;animation-play-state:paused}
+    .disc.playing{animation-play-state:running}@keyframes spin{to{transform:rotate(360deg)}}
+    .song-title{font-family:"Playfair Display",serif;font-size:24px}.song-sub{font-size:12px;color:var(--muted);margin-top:5px}
+    .player-row{display:flex;align-items:center;gap:13px;margin-top:22px}
+    .play{width:44px;height:44px;border-radius:50%;border:0;background:var(--pink);color:#241329;font-size:17px;cursor:pointer}
+    .track{height:4px;border-radius:9px;background:#ffffff25;flex:1;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--lav))}
+    .time{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+    .note{font-size:11px;color:#bbaec5;line-height:1.6;margin-top:15px}
+    .story-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:34px;text-align:left}
+    .story{padding:23px;border:1px solid #ffffff1b;background:#ffffff09;border-radius:20px;min-height:145px;transition:.25s}
+    .story:hover{transform:translateY(-4px);background:#ffffff12;border-color:#ffb7d555}
+    .story .num{font-size:11px;letter-spacing:.2em;color:var(--lav)}.story h3{font-family:"Playfair Display",serif;font-weight:500;font-size:22px;margin:12px 0 7px;color:#ffe1ed}.story p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+    .reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:32px auto 0;max-width:760px;text-align:left}
+    .reason{padding:14px 16px;border-radius:14px;background:#ffffff09;border:1px solid #ffffff16;color:#f9eaf3;font-size:13px}.reason b{color:var(--pink);margin-right:8px}
+    .memory-box{margin:32px auto 0;max-width:620px;border:1px dashed #ffb7d566;border-radius:24px;padding:35px 22px;background:#ffffff08}
+    .memory-box .heart{font-size:38px}.memory-box p{color:var(--muted);line-height:1.8}
+    .final{min-height:90vh}.final h2{font-size:clamp(42px,8vw,82px);color:var(--pink)}.signature{font-family:"Playfair Display",serif;font-style:italic;font-size:23px;color:#e8cfff;margin-top:28px}
+    footer{text-align:center;padding:25px;color:#8f819c;font-size:11px;letter-spacing:.12em}
+    .fade{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}.fade.show{opacity:1;transform:none}
+    .sparkle{position:absolute;color:#ffd7e8;animation:float 5s ease-in-out infinite;opacity:.65}.s1{top:23%;left:14%;font-size:24px}.s2{top:34%;right:15%;font-size:18px;animation-delay:1s}.s3{bottom:20%;left:22%;font-size:16px;animation-delay:2s}@keyframes float{50%{transform:translateY(-15px) rotate(12deg);opacity:1}}
+    @media(max-width:600px){section{padding:85px 6vw;min-height:auto}.hero{min-height:100svh}.story-grid,.reasons{grid-template-columns:1fr}.song-card{padding:19px}.topbar{padding:14px 5vw}.song-title{font-size:21px}}
+  
+    .letter-paper{
+      position:relative;isolation:isolate;overflow:hidden;
+      margin:34px auto 0;text-align:left;
+      padding:clamp(25px,6vw,52px);
+      border:1px solid #e8c8d5;border-radius:22px;
+      background:
+        radial-gradient(ellipse at 8% 5%,#f9dce8 0,transparent 28%),
+        radial-gradient(ellipse at 95% 92%,#f3dfd0 0,transparent 30%),
+        linear-gradient(145deg,#fffaf4 0%,#fff3ec 48%,#fdf1f5 100%);
+      color:#51394a;
+      box-shadow:0 28px 75px #120b1b55,0 0 0 7px #ffffff0a,inset 0 0 35px #dba9bd22;
+      line-height:2.05;animation:letterIn .85s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .letter-paper:before,.letter-paper:after{
+      content:"✦";position:absolute;z-index:-1;color:#d69ab6;opacity:.35;
+      font-size:78px;line-height:1
+    }
+    .letter-paper:before{top:7px;right:18px;transform:rotate(14deg)}
+    .letter-paper:after{bottom:6px;left:17px;transform:rotate(-12deg)}
+    .letter-paper .letter-kicker{
+      display:flex;align-items:center;gap:12px;justify-content:center;
+      text-align:center;letter-spacing:.2em;font-size:10px;font-weight:700;
+      color:#ad6688;margin-bottom:14px
+    }
+    .letter-paper .letter-kicker:before,.letter-paper .letter-kicker:after{
+      content:"";height:1px;width:38px;background:linear-gradient(90deg,transparent,#d9a3bc)
+    }
+    .letter-paper .letter-kicker:after{transform:scaleX(-1)}
+    .letter-paper h3{
+      text-align:center;font-family:'Playfair Display',serif;
+      font-size:clamp(25px,4.5vw,36px);line-height:1.35;
+      color:#8e456d;margin:12px 0 25px;
+      text-shadow:0 2px 0 #fff
+    }
+    .letter-paper h3:after{
+      content:"♡  ✧  ♡";display:block;margin-top:12px;
+      color:#ce8eaa;font-family:serif;font-size:17px;letter-spacing:.25em
+    }
+    .letter-paper p{
+      font-size:14px;line-height:2.05;margin:0 0 19px;
+      text-align:left;position:relative
+    }
+    .letter-paper p:not(.letter-signoff):first-of-type:first-letter{
+      color:#a64f7d;font-family:'Playfair Display',serif;font-size:34px;
+      float:left;line-height:1;padding:5px 7px 0 0
+    }
+    .letter-paper .letter-signoff{
+      text-align:center;font-family:'Playfair Display',serif;
+      font-size:19px;line-height:1.8;color:#914b70;
+      padding:22px 12px 10px;margin:24px 0 0;
+      border-top:1px dashed #d9a9bd
+    }
+    .letter-paper .letter-from{
+      text-align:right;margin-top:16px;padding-right:8px;
+      font-family:'Playfair Display',serif;font-style:italic;
+      color:#8e456d;font-size:21px
+    }
+    .letter-paper .letter-from:before{content:"With endless love, ";display:block;font-family:inherit;font-size:13px;color:#a87891;margin-bottom:3px}
+    @media(max-width:520px){
+      .letter-paper{padding:25px 20px;border-radius:18px}
+      .letter-paper p{font-size:13px;line-height:1.95}
+    }
+
+  
+    .letter-intro{max-width:700px;margin:28px auto -18px;text-align:center;
+      color:#e9b8d0;font-family:'Playfair Display',serif;font-style:italic;
+      font-size:16px;letter-spacing:.04em;animation:letterIn .7s ease both}
+
+  
+    .letter-story{display:flex;align-items:center;gap:18px;margin:22px 0 26px;}
+    .letter-story.reverse{flex-direction:row-reverse}
+    .letter-story figure{flex:0 0 31%;margin:0;}
+    .letter-story img{display:block;width:100%;height:auto;max-height:190px;object-fit:contain;
+      filter:drop-shadow(0 7px 10px #8b5c7022);border-radius:12px;}
+    .letter-story p{flex:1;margin:0;min-width:0;}
+    .letter-story:not(.reverse) p{text-align:left}
+    .letter-story.reverse p{text-align:left}
+    @media(max-width:520px){
+      .letter-story{gap:9px;margin:18px 0 22px;}
+      .letter-story figure{flex-basis:30%;}
+      .letter-story img{max-height:145px;}
+      .letter-story p{font-size:12px;line-height:1.85;}
+    }
+
+
+    body.locked{overflow:hidden}
+    #mainSite{visibility:hidden;height:100svh;overflow:hidden;opacity:0;transition:opacity .8s ease}
+    #mainSite.entered{visibility:visible;height:auto;overflow:visible;opacity:1}
+    .welcome-screen{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;background:radial-gradient(ellipse at 50% 25%,#593451 0%,#24152f 58%,#100b19 100%);}
+    .welcome-card{width:min(560px,100%);padding:clamp(28px,6vw,52px) 24px;border:1px solid #ffffff30;border-radius:30px;background:linear-gradient(145deg,#ffffff18,#ffffff08);box-shadow:0 25px 90px #0008;backdrop-filter:blur(12px)}
+    .welcome-heart{font-size:42px;color:#ffb7d5;animation:float 3s ease-in-out infinite}
+    .welcome-screen h1{font-size:clamp(42px,9vw,76px);margin:16px 0 12px}
+    .welcome-screen p{color:#e5d6e8;line-height:1.9;margin:0 auto;max-width:390px}
+    .welcome-screen .cta{font-size:15px;padding:16px 30px}
+    .welcome-small{margin-top:20px!important;font-size:11px;letter-spacing:.12em;color:#c7b9cf!important}
+    .welcome-screen[hidden]{display:none}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body class="locked">
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-card">
+      <div class="welcome-heart">♡</div>
+      <div class="eyebrow">A little surprise, made just for you</div>
+      <h1>Hey, Abi!<span>My Dear Thangachi ❤️</span></h1>
+      <p>Unakkaga unga Anna create panna oru chinna birthday surprise... உள்ளே வா! 💌</p>
+      <button class="cta" id="visitButton" type="button">Click to Visit Your Surprise ✨</button>
+      <p class="welcome-small">MADE WITH ENDLESS LOVE · FROM YOUR ANNA</p>
+    </div>
+  </div>
+  <div id="mainSite">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <header class="topbar"><div class="brand">A LITTLE WORLD OF ABI</div><button class="music-pill" id="topMusic">♫ Play our song</button></header>
+
+  <section class="hero" id="home">
+    <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">♡</span>
+    <div class="eyebrow">A little surprise, made just for you</div>
+    <h1>Happy Birthday,<span>Abi.</span></h1>
+    <p class="subtitle">Some people make the world brighter just by being in it.<br>Today, this little corner of the internet is all yours, Abinaya Maheswaran. ♡</p><img class="hero-photo" src="assets/abi-main.jpg" alt="Abi smiling in a green saree"><div class="photo-caption">A smile that makes the day brighter ♡</div>
+    <button class="cta" onclick="document.querySelector('#song').scrollIntoView({behavior:'smooth'})">Open your surprise ✨</button>
+    <div class="scroll">SCROLL TO FEEL THE LOVE ↓</div>
+  </section>
+
+  <section id="song"><div class="section-inner fade">
+    <div class="eyebrow">Press play & enjoy the moment</div><h2>A song, with you in mind.</h2>
+    <p class="lead">This song is the soundtrack to a little story about you. Let it play, take your time, and read each note made just for you.</p>
+    <div class="song-card">
+      <div class="song-top"><div class="disc" id="disc"></div><div><div class="song-title">Chellame Magale</div><div class="song-sub">A birthday dedication for Abi · 21st birthday</div></div></div>
+      <div class="player-row"><button class="play" id="play" aria-label="Play or pause">▶</button><div class="track"><div class="progress" id="progress"></div></div><div class="time" id="time">0:00</div></div>
+      <p class="note">Add your MP3 file as <b>assets/chellame-magale.mp3</b> to enable the music. The page is ready for your audio file.</p>
+      <audio id="audio" preload="metadata"><source src="assets/chellame-magale.mp3" type="audio/mpeg"></audio>
+    </div>
+  </div></section>
+
+  <section id="about"><div class="section-inner fade">
+    <div class="eyebrow">A few words for you</div><h2>If your song could describe you…</h2>
+    <p class="lead">Not copied lyrics — just little lines inspired by the warmth, joy and love a beautiful song can carry.</p>
+    <div class="story-grid">
+      <article class="story"><div class="num">01 · YOUR SMILE</div><h3>A little sunshine</h3><p>Your smile has a way of making even an ordinary day feel special.</p></article>
+      <article class="story"><div class="num">02 · YOUR HEART</div><h3>Soft & precious</h3><p>You have a heart that deserves the same kindness you give to everyone.</p></article>
+      <article class="story"><div class="num">03 · YOUR SPARK</div><h3>One of a kind</h3><p>Your little quirks, laughter and playful moments make you wonderfully you.</p></article>
+      <article class="story"><div class="num">04 · YOUR JOURNEY</div><h3>Made to shine</h3><p>May every new chapter bring you closer to the dreams you hold close.</p></article>
+    </div>
+  </div></section>
+
+  <section id="reasons"><div class="section-inner fade">
+    <div class="eyebrow">21 looks lovely on you</div><h2>21 little reasons you're special.</h2>
+    <p class="lead">A small celebration of the things that make Abi, Abi.</p>
+    <div class="reasons">
+      <div class="reason"><b>01</b> Your beautiful smile</div><div class="reason"><b>02</b> Your kind heart</div>
+      <div class="reason"><b>03</b> Your cute expressions</div><div class="reason"><b>04</b> Your infectious laughter</div>
+      <div class="reason"><b>05</b> Your caring nature</div><div class="reason"><b>06</b> Your little mischief</div>
+      <div class="reason"><b>07</b> Your honest words</div><div class="reason"><b>08</b> Your unique style</div>
+      <div class="reason"><b>09</b> Your lovely energy</div><div class="reason"><b>10</b> Your courage</div>
+      <div class="reason"><b>11</b> Your dreams</div><div class="reason"><b>12</b> Your patience</div>
+      <div class="reason"><b>13</b> Your fun conversations</div><div class="reason"><b>14</b> Your thoughtful side</div>
+      <div class="reason"><b>15</b> Your confidence</div><div class="reason"><b>16</b> Your playful spirit</div>
+      <div class="reason"><b>17</b> Your strength</div><div class="reason"><b>18</b> Your warmth</div>
+      <div class="reason"><b>19</b> Your bright ideas</div><div class="reason"><b>20</b> Your lovely presence</div>
+      <div class="reason"><b>21</b> Simply because you are Abi ♡</div>
+    </div>
+  </div></section>
+
+  <section id="memories"><div class="section-inner fade">
+    <div class="eyebrow">Little moments, big memories</div><h2>Our memory corner.</h2>
+    <div class="memory-gallery">
+      <img src="assets/abi-smile.jpg" alt="A happy selfie with Abi">
+      <img src="assets/abi-memories.jpg" alt="A shared memory">
+      <img src="assets/abi-temple.jpg" alt="Abi at a temple">
+      <img src="assets/abi-family.jpg" alt="A family moment">
+    </div>
+    <div class="memory-box"><div class="heart">♡</div><h3 style="font-family:'Playfair Display',serif;font-size:25px;font-weight:500">Every photo holds a little story</h3><p>These are little moments that make this birthday page truly yours, Abi. Keep collecting beautiful memories.</p></div>
+  </div></section>
+
+  <section class="final" id="letter"><div class="section-inner fade">
+    <div class="eyebrow">From your Anna, with all my heart</div>
+    <h2>A letter for my Thangachi.</h2>
+    <p class="lead">Some feelings are too precious for a simple birthday wish. I wanted you to have these words to keep.</p>
+    <div class="letter-wrap">
+      <div class="envelope" id="envelope">
+        <div class="envelope-top"></div>
+        <div class="envelope-heart">♡</div>
+        <div class="envelope-label">For my dear Abi</div>
+      </div>
+      <div class="letter-actions"><button class="cta" id="openLetter" type="button">Open your letter 💌</button><button class="cta secondary" id="closeLetter" type="button" hidden>Close letter ✕</button></div>
+      <div class="letter-intro" id="letterIntro" hidden>♡ A little piece of my heart, written just for you ♡</div><article class="letter-paper" id="letterPaper" hidden>
+        <div class="letter-kicker">A little promise from your Anna</div>
+        <h3>Happy Birthday, My Dear Thangachi! ❤️🥹</h3>
+        <div class="letter-story">
+          <figure><img src="assets/cartoon-01.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>அண்ணன் எப்பவும் உன்கூட ❤️</figcaption></figure>
+          <p>முதல்ல ஒன்னு மட்டும் ஞாபகம் வச்சுக்கோ… வாழ்க்கையில எது நடந்தாலும், எதை நினைச்சும் நீ கவலைப்படாத. உனக்கு ஒரு அண்ணனா நான் எப்பவும் இருப்பேன். இப்போ என்னால எல்லாத்தையும் செய்ய முடியாமல் இருக்கலாம். ஆனால் கண்டிப்பா ஒரு நாள் வாழ்க்கையில ஒரு நல்ல நிலைக்கு வந்து, உன்னை என் தங்கச்சியா நினைச்சு எல்லா விதத்திலும் பார்த்துப்பேன்.</p>
+        </div>
+        <div class="letter-story reverse">
+          <figure><img src="assets/cartoon-02.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>உன் கனவுகளுக்கு துணையாக ✨</figcaption></figure>
+          <p>உன்னோட ஒவ்வொரு கனவும் கண்டிப்பா நிறைவேறணும். உன்னோட சந்தோஷத்துல மட்டும் இல்லாமல், உன்னோட கஷ்டத்திலும், கண்ணீரிலும், ஒவ்வொரு சின்ன சின்ன விஷயத்திலும் உன்கூட இருக்கணும்னு ஆசைப்படுறேன்.</p>
+        </div>
+        <div class="letter-story">
+          <figure><img src="assets/cartoon-03.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>என் இரண்டு தங்கச்சிகள் 🫶</figcaption></figure>
+          <p>நீயும் மீனாவும் எனக்கு ஒரே மாதிரிதான். நான் யாரையும் யாரோடையும் கம்பேர் பண்ணிப் பார்க்கிறவன் கிடையாது. என்னைப் பொறுத்தவரைக்கும் நீங்களும் என்னோட தங்கச்சிங்கதான். உனக்கு உன்னோட சொந்த அண்ணன், தம்பி எப்படி இருப்பாங்கன்னு எனக்குத் தெரியாது. ஆனால் நான் மட்டும் கண்டிப்பா உனக்கு ஒரு நல்ல அண்ணனா இருக்க முயற்சி பண்ணுவேன்.</p>
+        </div>
+        <div class="letter-story reverse">
+          <figure><img src="assets/cartoon-04.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>ஒன்றாக வளர்வோம் ❤️</figcaption></figure>
+          <p>ஒரே ஒரு விஷயம்… நீ எனக்கு எப்பவும் சப்போர்ட்டிவா இரு. நான் உனக்கு எப்பவும் சப்போர்ட்டிவா இருப்பேன். இன்று நான் எந்த நிலையில் இருந்தாலும், நாளைக்கு வாழ்க்கையில எவ்வளவு பெரிய உயரத்துக்குப் போனாலும், உன்னையும் மீனாவையும் என்னைக்கும் மறக்க மாட்டேன். உன்னை எந்தச் சூழ்நிலையிலும் கைவிட மாட்டேன்னு சத்தியமா சொல்றேன்.</p>
+        </div>
+        <div class="letter-story">
+          <figure><img src="assets/cartoon-05.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>எப்போதும் உனக்காக</figcaption></figure>
+          <p>உனக்கு என்ன வேணாலும் தயங்காம உன் அண்ணன்கிட்ட கேளு. அது சின்ன விஷயமா இருந்தாலும் சரி, பெரிய விஷயமா இருந்தாலும் சரி, என்னால முடிஞ்ச அளவுக்கு இல்ல… முடிந்த எல்லா வழியிலும் உனக்காக நான் இருப்பேன்.</p>
+        </div>
+        <div class="letter-story reverse">
+          <figure><img src="assets/cartoon-06.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>சிரிப்பு நிறைந்த நாட்கள் 🌸</figcaption></figure>
+          <p>இந்தப் பிறந்தநாள் உன்னோட வாழ்க்கையில ஒரு அழகான தொடக்கமா இருக்கணும். இனி வரப்போற ஒவ்வொரு நாளும் உனக்கு சந்தோஷத்தையும், நிம்மதியையும், வெற்றியையும் கொடுக்கணும். உன்னோட எல்லா கனவுகளும் நிஜமாகணும். நீ எப்பவும் சிரிச்சுக்கிட்டே சந்தோஷமா இருக்கணும்.</p>
+        </div>
+        <div class="letter-story">
+          <figure><img src="assets/cartoon-07.png" alt="Cartoon illustration of a brother and sister sharing a loving moment"><figcaption>உன் அண்ணன் எப்போதும் ❤️</figcaption></figure>
+          <p>ஒரு விஷயம் மட்டும் மறந்துடாத… உனக்கு எத்தனை பேர் இருந்தாலும், உனக்காக எப்பவும் நிற்குற ஒரு அண்ணன் நான் இருக்கேன். ❤️</p>
+        </div>
+        <p class="letter-signoff">Love you, my dear sister! 🫂❤️<br><br>Once again, Happiest Birthday, Thangachi! 🎂❤️</p>
+        <div class="letter-from">— உன் அண்ணன் ❤️</div>
+      </article>
+    </div>
+  </div></section>
+
+  <footer>MADE WITH ♡ FOR ABINAYA MAHESWARAN</footer>
+  </div><!-- /mainSite -->
+
+<script>
+  const audio=document.getElementById('audio'), play=document.getElementById('play'), disc=document.getElementById('disc');
+  const progress=document.getElementById('progress'), time=document.getElementById('time');
+  const topMusic=document.getElementById('topMusic');
+  const songReady=!!audio.querySelector('source') && audio.querySelector('source').getAttribute('src');
+  function toggle(){
+    if(!songReady){document.querySelector('.note').textContent='Please add your MP3 as assets/chellame-magale.mp3. Then the birthday song will play here.';return;}
+    if(audio.paused){audio.play().catch(()=>{document.querySelector('.note').textContent='Tap Play once more to start the song.';});}
+    else audio.pause();
+  }
+  play.addEventListener('click',toggle); topMusic.addEventListener('click',toggle);
+  audio.addEventListener('play',()=>{play.textContent='Ⅱ';disc.classList.add('playing');topMusic.textContent='♫ Music playing · Tap to stop';});
+  audio.addEventListener('pause',()=>{play.textContent='▶';disc.classList.remove('playing');topMusic.textContent='♫ Play our song';});
+  audio.addEventListener('timeupdate',()=>{const pct=audio.duration?audio.currentTime/audio.duration*100:0;progress.style.width=pct+'%';const m=Math.floor(audio.currentTime/60),s=Math.floor(audio.currentTime%60).toString().padStart(2,'0');time.textContent=m+':'+s;});
+  document.getElementById('visitButton').addEventListener('click',()=>{
+    const welcome=document.getElementById('welcomeScreen');
+    const site=document.getElementById('mainSite');
+    welcome.style.opacity='0';welcome.style.transition='opacity .65s ease';
+    site.classList.add('entered');document.body.classList.remove('locked');
+    window.scrollTo({top:0,behavior:'instant'});
+    setTimeout(()=>{welcome.hidden=true;},680);
+    if(songReady){audio.play().catch(()=>{topMusic.textContent='♫ Tap to play our song';});}
+    else document.querySelector('.note').textContent='Add your MP3 file as assets/chellame-magale.mp3 to hear the birthday song.';
+  });
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+  document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
+  const openLetter=document.getElementById('openLetter');
+  const closeLetter=document.getElementById('closeLetter');
+  const letterPaper=document.getElementById('letterPaper');
+  const letterIntro=document.getElementById('letterIntro');
+  const envelope=document.getElementById('envelope');
+
+  openLetter.addEventListener('click',()=>{
+    letterPaper.hidden=false;
+    letterIntro.hidden=false;
+    envelope.classList.add('open');
+    openLetter.hidden=true;
+    closeLetter.hidden=false;
+    setTimeout(()=>letterPaper.scrollIntoView({behavior:'smooth',block:'start'}),250);
+  });
+
+  closeLetter.addEventListener('click',()=>{
+    letterPaper.hidden=true;
+    letterIntro.hidden=true;
+    envelope.classList.remove('open');
+    closeLetter.hidden=true;
+    openLetter.hidden=false;
+    openLetter.textContent='Open your letter again 💌';
+    document.getElementById('letter').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+</script>
+</body>
+</html>
